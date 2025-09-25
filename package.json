@@ -1,0 +1,64 @@
+{
+  "name": "project-demo",
+  "version": "1.0.0",
+  "description": "My Moleculer-based microservices project",
+  "type": "module",
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json || cd .",
+    "postbuild": "echo {\\\"type\\\": \\\"commonjs\\\"} > dist/package.json",
+    "dev": "tsx ./node_modules/moleculer/bin/moleculer-runner.js --config moleculer.config.ts --hot --repl services/**/*.service.ts",
+    "start": "moleculer-runner --config dist/moleculer.config.js",
+    "cli": "moleculer connect NATS",
+    "typecheck": "tsc --noEmit true",
+    "ci": "vitest --watch",
+    "test": "vitest --run --coverage",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "dc:up": "docker compose up --build -d",
+    "dc:logs": "docker compose logs -f",
+    "dc:down": "docker compose down"
+  },
+  "keywords": [
+    "microservices",
+    "moleculer"
+  ],
+  "author": "",
+  "devDependencies": {
+    "@types/node": "^22.17.1",
+    "@types/lodash": "^4.17.20",
+		"@eslint/js": "^9.33.0",
+    "eslint": "^9.33.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+		"typescript-eslint": "^8.39.0",
+    "prettier": "^3.6.2",
+    "@types/supertest": "^6.0.3",
+    "supertest": "^7.1.4",
+    "socket.io-client": "^4.8.1",
+    "graphql-request": "^6.1.0",
+    "moleculer-repl": "^0.7.4",
+		"tsx": "^4.20.3",
+		"typescript": "^5.9.2",
+		"vitest": "^3.2.4",
+    "@vitest/coverage-v8": "^3.2.4"
+  },
+  "dependencies": {
+    "moleculer-web": "github:moleculerjs/moleculer-web#next",
+    "@moleculer/database": "github:moleculerjs/database#next",
+    "mongodb": "^6.18.0",
+    "@seald-io/nedb": "^4.1.2",
+    "nats": "^2.29.3",
+    "ioredis": "^5.7.0",
+    "graphql": "^16.11.0",
+    "moleculer-apollo-server": "^0.4.0",
+    "graphql-type-json": "^0.3.2",
+    "@moleculer/channels": "github:moleculerjs/moleculer-channels#next",
+    "@moleculer/workflows": "^0.1.2",
+    "moleculer-io": "^2.2.0",
+    "lodash": "^4.17.21",
+    "moleculer": "github:moleculerjs/moleculer#next"
+  },
+  "engines": {
+    "node": ">= 20.x.x"
+  }
+}
