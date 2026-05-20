@@ -1,0 +1,65 @@
+{
+  "name": "project-demo",
+  "version": "1.0.0",
+  "description": "My Moleculer-based microservices project",
+  "type": "module",
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json || cd .",
+    "postbuild": "echo {\\\"type\\\": \\\"commonjs\\\"} > dist/package.json",
+    "dev": "tsx ./node_modules/moleculer/bin/moleculer-runner.js --config moleculer.config.ts --hot --repl services/**/*.service.ts",
+    "start": "moleculer-runner --config dist/moleculer.config.js",
+    "cli": "moleculer connect NATS",
+    "typecheck": "tsc --noEmit true",
+    "ci": "vitest --watch",
+    "test": "vitest --run --coverage",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "dc:up": "docker compose up --build -d",
+    "dc:logs": "docker compose logs -f",
+    "dc:down": "docker compose down"
+  },
+  "keywords": [
+    "microservices",
+    "moleculer"
+  ],
+  "author": "",
+  "devDependencies": {
+    "@types/node": "^22.17.1",
+    "@types/lodash": "^4.17.24",
+		"@eslint/js": "^9.33.0",
+    "eslint": "^9.33.0",
+    "globals": "^17.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+		"typescript-eslint": "^8.39.0",
+    "prettier": "^3.8.1",
+    "@types/supertest": "^7.2.0",
+    "supertest": "^7.2.2",
+    "socket.io-client": "^4.8.3",
+    "graphql-request": "^7.4.0",
+    "moleculer-repl": "^0.8.0",
+		"tsx": "^4.21.0",
+		"typescript": "^5.9.2",
+		"vitest": "^4.1.2",
+    "@vitest/coverage-v8": "^4.1.2"
+  },
+  "dependencies": {
+    "moleculer-web": "^0.11.0",
+    "@moleculer/database": "^0.4.0",
+    "mongodb": "^7.1.1",
+    "@seald-io/nedb": "^4.1.2",
+    "nats": "^2.29.3",
+    "ioredis": "^5.10.1",
+    "graphql": "^16.13.2",
+    "moleculer-apollo-server": "^0.4.1",
+    "graphql-type-json": "^0.3.2",
+    "@moleculer/channels": "^0.3.0",
+    "@moleculer/workflows": "^0.2.1",
+    "moleculer-io": "^3.0.0",
+    "lodash": "^4.17.23",
+    "moleculer": "^0.15.0"
+  },
+  "engines": {
+    "node": ">= 22.x.x"
+  }
+}
